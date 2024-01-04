@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{find\PYGZus{}contrapositive}\PYG{p}{(}\PYG{n}{sentence}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} Split the sentence into words}
+    \PYG{n}{words} \PYG{o}{=} \PYG{n}{sentence}\PYG{o}{.}\PYG{n}{split}\PYG{p}{()}
+
+    \PYG{c+c1}{\PYGZsh{} Find the position of \PYGZdq{}if\PYGZdq{} and \PYGZdq{}then\PYGZdq{} in the sentence}
+    \PYG{n}{if\PYGZus{}index} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+    \PYG{n}{then\PYGZus{}index} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+    \PYG{k}{for} \PYG{n}{i}\PYG{p}{,} \PYG{n}{word} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{words}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n}{word}\PYG{o}{.}\PYG{n}{lower}\PYG{p}{()} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}if\PYGZdq{}}\PYG{p}{:}
+            \PYG{n}{if\PYGZus{}index} \PYG{o}{=} \PYG{n}{i}
+        \PYG{k}{elif} \PYG{n}{word}\PYG{o}{.}\PYG{n}{lower}\PYG{p}{()} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}then\PYGZdq{}}\PYG{p}{:}
+            \PYG{n}{then\PYGZus{}index} \PYG{o}{=} \PYG{n}{i}
+
+    \PYG{c+c1}{\PYGZsh{} Check if both \PYGZdq{}if\PYGZdq{} and \PYGZdq{}then\PYGZdq{} were found}
+    \PYG{k}{if} \PYG{n}{if\PYGZus{}index} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o+ow}{and} \PYG{n}{then\PYGZus{}index} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{} Identify the p (if) and q (then) parts of the statement}
+        \PYG{n}{p} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{} \PYGZdq{}}\PYG{o}{.}\PYG{n}{join}\PYG{p}{(}\PYG{n}{words}\PYG{p}{[}\PYG{n}{if\PYGZus{}index} \PYG{o}{+} \PYG{l+m+mi}{1} \PYG{p}{:} \PYG{n}{then\PYGZus{}index}\PYG{p}{])}
+        \PYG{n}{q} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{} \PYGZdq{}}\PYG{o}{.}\PYG{n}{join}\PYG{p}{(}\PYG{n}{words}\PYG{p}{[}\PYG{n}{then\PYGZus{}index} \PYG{o}{+} \PYG{l+m+mi}{1} \PYG{p}{:])}
+
+        \PYG{c+c1}{\PYGZsh{} Negating both the p and the q}
+        \PYG{n}{np} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}it is not true that \PYGZdq{}} \PYG{o}{+} \PYG{n}{p}
+        \PYG{n}{nq} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}it is not true that \PYGZdq{}} \PYG{o}{+} \PYG{n}{q}
+
+        \PYG{c+c1}{\PYGZsh{} Form the contrapositive statement}
+        \PYG{n}{contrapositive} \PYG{o}{=} \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}If }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{np}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{, then }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{nq}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}
+
+        \PYG{k}{return} \PYG{n}{contrapositive}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{k}{return} \PYG{l+s+s2}{\PYGZdq{}Invalid input sentence. Please use \PYGZsq{}if\PYGZsq{} and \PYGZsq{}then\PYGZsq{} in your sentence.\PYGZdq{}}
+
+
+\PYG{c+c1}{\PYGZsh{} Example usage:}
+\PYG{n}{original\PYGZus{}sentence} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}If he comes then I will go.\PYGZdq{}}
+\PYG{n}{contrapositive\PYGZus{}sentence} \PYG{o}{=} \PYG{n}{find\PYGZus{}contrapositive}\PYG{p}{(}\PYG{n}{original\PYGZus{}sentence}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Original:\PYGZdq{}}\PYG{p}{,} \PYG{n}{original\PYGZus{}sentence}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Contrapositive:\PYGZdq{}}\PYG{p}{,} \PYG{n}{contrapositive\PYGZus{}sentence}\PYG{p}{)}
+\end{Verbatim}

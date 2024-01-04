@@ -1,0 +1,59 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{a} \PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Binary A: \PYGZdq{}}\PYG{p}{)}
+\PYG{n}{b} \PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Binary B: \PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} bionary addition function}
+\PYG{k}{def} \PYG{n+nf}{bin\PYGZus{}add}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{):}
+    \PYG{n}{max\PYGZus{}len} \PYG{o}{=} \PYG{n+nb}{max}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{a}\PYG{p}{),} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{b}\PYG{p}{))}
+    \PYG{n}{a} \PYG{o}{=} \PYG{n}{a}\PYG{o}{.}\PYG{n}{zfill}\PYG{p}{(}\PYG{n}{max\PYGZus{}len}\PYG{p}{)}
+    \PYG{n}{b} \PYG{o}{=} \PYG{n}{b}\PYG{o}{.}\PYG{n}{zfill}\PYG{p}{(}\PYG{n}{max\PYGZus{}len}\PYG{p}{)}
+    \PYG{n}{result} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{carry} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{max\PYGZus{}len} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{):}
+        \PYG{n}{r} \PYG{o}{=} \PYG{n}{carry}
+        \PYG{n}{r} \PYG{o}{+=} \PYG{l+m+mi}{1} \PYG{k}{if} \PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}1\PYGZdq{}} \PYG{k}{else} \PYG{l+m+mi}{0}
+        \PYG{n}{r} \PYG{o}{+=} \PYG{l+m+mi}{1} \PYG{k}{if} \PYG{n}{b}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}1\PYGZdq{}} \PYG{k}{else} \PYG{l+m+mi}{0}
+        \PYG{n}{result} \PYG{o}{=} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}1\PYGZdq{}} \PYG{k}{if} \PYG{n}{r} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{2} \PYG{o}{==} \PYG{l+m+mi}{1} \PYG{k}{else} \PYG{l+s+s2}{\PYGZdq{}0\PYGZdq{}}\PYG{p}{)} \PYG{o}{+} \PYG{n}{result}
+        \PYG{c+c1}{\PYGZsh{} carry}
+        \PYG{n}{carry} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{k}{if} \PYG{n}{r} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2} \PYG{k}{else} \PYG{l+m+mi}{1}
+
+    \PYG{k}{if} \PYG{n}{carry} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{n}{result} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}1\PYGZdq{}} \PYG{o}{+} \PYG{n}{result}
+    \PYG{k}{return} \PYG{n}{result}\PYG{o}{.}\PYG{n}{zfill}\PYG{p}{(}\PYG{n}{max\PYGZus{}len}\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{} subtraction function, useing 2\PYGZsq{}s compliment}
+\PYG{k}{def} \PYG{n+nf}{bin\PYGZus{}sub}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{):}
+    \PYG{n}{max\PYGZus{}len} \PYG{o}{=} \PYG{n+nb}{max}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{a}\PYG{p}{),} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{b}\PYG{p}{))}
+    \PYG{n}{a} \PYG{o}{=} \PYG{n}{a}\PYG{o}{.}\PYG{n}{zfill}\PYG{p}{(}\PYG{n}{max\PYGZus{}len}\PYG{p}{)}
+    \PYG{n}{b} \PYG{o}{=} \PYG{n}{b}\PYG{o}{.}\PYG{n}{zfill}\PYG{p}{(}\PYG{n}{max\PYGZus{}len}\PYG{p}{)}
+    \PYG{n}{ch} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}
+
+    \PYG{n}{c} \PYG{o}{=} \PYG{n}{compliment}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}
+    \PYG{n}{result} \PYG{o}{=} \PYG{n}{bin\PYGZus{}add}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{c}\PYG{p}{)}
+
+    \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{result}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{n}{max\PYGZus{}len}\PYG{p}{:}
+        \PYG{k}{if} \PYG{n}{result}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}1\PYGZdq{}}\PYG{p}{:}
+            \PYG{n}{compliment}\PYG{p}{(}\PYG{n}{result}\PYG{p}{)}
+            \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{result}\PYG{p}{)):}
+                \PYG{n}{ch} \PYG{o}{+=} \PYG{n}{result}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+        \PYG{k}{return} \PYG{n}{ch}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{k}{return} \PYG{n}{result}
+
+
+\PYG{c+c1}{\PYGZsh{} finding 2\PYGZsq{}s compliment of binary number}
+\PYG{k}{def} \PYG{n+nf}{compliment}\PYG{p}{(}\PYG{n}{a}\PYG{p}{):}
+    \PYG{n}{newa} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)):}
+        \PYG{k}{if} \PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}1\PYGZdq{}}\PYG{p}{:}
+            \PYG{n}{newa} \PYG{o}{+=} \PYG{l+s+s2}{\PYGZdq{}0\PYGZdq{}}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n}{newa} \PYG{o}{+=} \PYG{l+s+s2}{\PYGZdq{}1\PYGZdq{}}
+    \PYG{k}{return} \PYG{n}{bin\PYGZus{}add}\PYG{p}{(}\PYG{n}{newa}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}1\PYGZdq{}}\PYG{p}{)}
+
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Sum of A \PYGZam{} B = \PYGZdq{}} \PYG{o}{+} \PYG{n}{bin\PYGZus{}add}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{))}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Difference of A \PYGZam{} B = \PYGZdq{}} \PYG{o}{+} \PYG{n}{bin\PYGZus{}sub}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{))}
+\end{Verbatim}

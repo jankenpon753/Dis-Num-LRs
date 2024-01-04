@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, total={6in, 8.5in}]{geometry}
+\usepackage{graphicx}
+\graphicspath{ {images/output/} }
+\usepackage{amsmath}
+\usepackage{minted}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage[english]{babel}
+\usepackage{placeins}
+\usepackage{titling}
+
+
+\begin{document}
+\input{omaer_sir_cover.tex}
+\input{lrp7.tex}
+\input{lrp8.tex}
+\input{lrp9.tex}
+\pagebreak
+\section*{Functions}
+The functions used to do the three methods in MATLAB are as such with brief description of each of them:
+\begin{description}
+    \item[syms] Create symbolic scalar variables and functions, and matrix variables and functions. By using $syms\;\;x$, a variable $x$ is declared for the the code. So anywhere in the code input, if there is x, it can be accessed as a variable.
+    \item[input()] $x\;=\;input(prompt)$ displays the text in prompt and waits for the user to input a value and press the Return key. The user can enter expressions, like $pi/4$ or $rand(3)$, and can use variables in the workspace.
+    \item[eval()] Evaluates a MATLAB expressions.
+    \item[subs()] Symbolic substitution. subs(s,new) returns a copy of $s$, replacing all occurrences of the symbolic scalar variable (declared as $syms\;x$) in $s$ with $new$ ($new$ can be a number or another variable), and then evaluates $s$.
+    \item[disp()] $disp(X)$ displays the value of variable $X$ without printing the variable name.
+    \item[fprintf()] Like the $printf()$ function in C language. Unline $disp()$ using this function data can be written in text.
+    \item[if\_else] $if\;expression$, $statements$, $end$ evaluates an expression, and executes a group of statements when the expression is true. An expression is true when its result is nonempty and contains only nonzero elements (logical or real numeric). Otherwise, the expression is false.\\
+          The $elseif$ and $else$ blocks are optional. The statements execute only if previous expressions in the $if...\;end$ block are false. An if block can include multiple elseif blocks.
+    \item[while] $while\;expression$, $statements$, $end$ evaluates an expression, and repeats the execution of a group of statements in a loop while the expression is true. An expression is true when its result is nonempty and contains only nonzero elements (logical or real numeric). Otherwise, the expression is false.
+\end{description}
+These function are the newly learned ones for these experiments.\cite{matlab}
+\pagebreak
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+
+\end{document}

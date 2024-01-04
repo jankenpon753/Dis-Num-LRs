@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{sympy}
+
+\PYG{c+c1}{\PYGZsh{} Define symbolic variables}
+\PYG{n}{p}\PYG{p}{,} \PYG{n}{q} \PYG{o}{=} \PYG{n}{sympy}\PYG{o}{.}\PYG{n}{symbols}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}p q\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Define your logical expressions. Here we enter the logical expressions we want to check equivalance of.}
+\PYG{c+c1}{\PYGZsh{} Here for testing, De Morgan\PYGZsq{}s theorem is used.}
+\PYG{n}{expr1} \PYG{o}{=} \PYG{o}{\PYGZti{}}\PYG{p}{(}\PYG{n}{p} \PYG{o}{\PYGZam{}} \PYG{n}{q}\PYG{p}{)}
+\PYG{n}{expr2} \PYG{o}{=} \PYG{o}{\PYGZti{}}\PYG{n}{p} \PYG{o}{|} \PYG{o}{\PYGZti{}}\PYG{n}{q}
+
+\PYG{c+c1}{\PYGZsh{} Check for logical equivalence: Simplifying the logical expressions and then storing the boolean value in a variable.}
+\PYG{n}{equivalent} \PYG{o}{=} \PYG{n}{sympy}\PYG{o}{.}\PYG{n}{simplify\PYGZus{}logic}\PYG{p}{(}\PYG{n}{expr1}\PYG{p}{)} \PYG{o}{==} \PYG{n}{sympy}\PYG{o}{.}\PYG{n}{simplify\PYGZus{}logic}\PYG{p}{(}\PYG{n}{expr2}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} From the previous statement, we get if the expressions are logically equivalant.}
+\PYG{k}{if} \PYG{n}{equivalent}\PYG{p}{:}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}The expressions are logically equivalent.\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}The expressions are not logically equivalent.\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

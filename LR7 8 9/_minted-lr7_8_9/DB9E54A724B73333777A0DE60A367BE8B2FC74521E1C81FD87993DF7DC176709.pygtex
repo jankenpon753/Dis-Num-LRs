@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\PYG{x}{\PYGZpc{} Clearing Screen}
+\PYG{x}{clc}
+
+\PYG{x}{\PYGZpc{} Setting x as symbolic variable, in every string, x will be considered as a variable}
+\PYG{x}{syms x;}
+
+\PYG{x}{\PYGZpc{} Input Section}
+\PYG{x}{eqn = input(\PYGZsq{}Enter non\PYGZhy{}linear equations: \PYGZsq{}); \PYGZpc{}input as normal string.}
+\PYG{x}{a = input(\PYGZsq{}Enter first guess: \PYGZsq{});}
+\PYG{x}{b = input(\PYGZsq{}Enter second guess: \PYGZsq{});}
+\PYG{x}{e = input(\PYGZsq{}Tolerable error: \PYGZsq{}); \PYGZpc{}error margin}
+
+\PYG{x}{\PYGZpc{} Finding Functional Value}
+\PYG{x}{fa = eval(subs(eqn,x,a));}
+\PYG{x}{fb = eval(subs(eqn,x,b));}
+
+\PYG{x}{\PYGZpc{} Implementing Bisection Method}
+\PYG{x}{if fa*fb \PYGZgt{} 0}
+\PYG{x}{    disp(\PYGZsq{}Initial values does not create bracket around the root\PYGZsq{});}
+\PYG{x}{else}
+\PYG{x}{    c = (a+b)/2;}
+\PYG{x}{    fc = eval(subs(eqn,x,c));}
+\PYG{x}{    fprintf(\PYGZsq{}\PYGZbs{}n\PYGZbs{}na\PYGZbs{}t\PYGZbs{}t\PYGZbs{}tb\PYGZbs{}t\PYGZbs{}t\PYGZbs{}tc\PYGZbs{}t\PYGZbs{}t\PYGZbs{}tf(c)\PYGZbs{}n\PYGZsq{});}
+\PYG{x}{    while abs(fc)\PYGZgt{}e}
+\PYG{x}{        fprintf(\PYGZsq{}\PYGZpc{}f\PYGZbs{}t\PYGZpc{}f\PYGZbs{}t\PYGZpc{}f\PYGZbs{}t\PYGZpc{}f\PYGZbs{}n\PYGZsq{},a,b,c,fc);}
+\PYG{x}{        if fa*fc\PYGZlt{} 0}
+\PYG{x}{            b =c;}
+\PYG{x}{        else}
+\PYG{x}{            a =c;}
+\PYG{x}{        end}
+\PYG{x}{        c = (a+b)/2;}
+\PYG{x}{        fc = eval(subs(eqn,x,c));}
+\PYG{x}{    end}
+\PYG{x}{    fprintf(\PYGZsq{}\PYGZbs{}nRoot is: \PYGZpc{}f\PYGZbs{}n\PYGZsq{}, c);}
+\PYG{x}{end}
+\end{Verbatim}

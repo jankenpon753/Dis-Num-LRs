@@ -1,0 +1,74 @@
+\clearpage
+\title{Finding root of nonlinear equation using Bisection Method.}
+\author{}
+\date{}
+\maketitle
+
+\section*{Introduction}
+\subsection*{Bisection Method}
+Bisection method is based on the fact that if $f(x)$ is real and continuous function, and for two initial guesses $a$ and $b$ brackets the root such that: $f(a)\times f(b)< 0$ then there exists at least one root between $a$ and $b$.\\\\
+Root is obtained in Bisection method by successive halving the interval i.e. If $a$ and $b$ are two guesses then we compute new approximated root as:
+\[c = \frac{(a+b)}{2}\]
+Now we have following three different cases:
+\begin{itemize}
+    \item If $f(c)=0$ then the root is c.
+    \item If $f(a)\times f(b)< 0$ then root lies between $a$ and $c$.
+    \item If $f(a)\times f(c)> 0$ then root lies between $b$ and $c$.
+\end{itemize}
+And then the process is repeated until we find the root within desired accuracy.\cite{bisec}
+
+\section*{Tools Used}
+\begin{itemize}
+    \item MATLAB R2021a - for writing and running code.
+    \item MacTeX -\LaTeX  compiler.
+    \item VS Code with \LaTeX workshop extension as a text editor.
+\end{itemize}
+
+\section*{Process}
+\subsection*{Code for Bisection:}
+\begin{minted}[breaklines, linenos]{matlab}
+% Clearing Screen
+clc
+
+% Setting x as symbolic variable, in every string, x will be considered as a variable
+syms x;
+
+% Input Section
+eqn = input('Enter non-linear equations: '); %input as normal string.
+a = input('Enter first guess: ');
+b = input('Enter second guess: ');
+e = input('Tolerable error: '); %error margin
+
+% Finding Functional Value
+fa = eval(subs(eqn,x,a));
+fb = eval(subs(eqn,x,b));
+
+% Implementing Bisection Method
+if fa*fb > 0 
+    disp('Initial values does not create bracket around the root');
+else
+    c = (a+b)/2;
+    fc = eval(subs(eqn,x,c));
+    fprintf('\n\na\t\t\tb\t\t\tc\t\t\tf(c)\n');
+    while abs(fc)>e
+        fprintf('%f\t%f\t%f\t%f\n',a,b,c,fc);
+        if fa*fc< 0
+            b =c;
+        else
+            a =c;
+        end
+        c = (a+b)/2;
+        fc = eval(subs(eqn,x,c));
+    end
+    fprintf('\nRoot is: %f\n', c);
+end
+\end{minted}
+\subsection*{Output}
+\begin{center}
+    \centering
+    \includegraphics[width = .9\textwidth]{bisec.jpeg}
+    \captionof{figure}{Bisection method}
+\end{center}
+
+
+

@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{minted}
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage[english]{babel}
+\usepackage{placeins}
+
+\title{Modular Exponentiation and Binary Arithmetic in Python.}
+\author{Md Tajim An Noor}
+\date{}
+\begin{document}
+\input{nahid_sir_cover.tex}
+\pagebreak
+
+\tableofcontents
+
+\maketitle
+\section{Introduction}
+
+
+\subsection{Chinese Remainder Theorem}
+The Chinese remainder theorem, named after the Chinese heritage of problems involving systems of linear congruences, states that when the moduli of a system of linear congruences are pairwise relatively prime, there is a unique solution of the system modulo the product of the moduli.
+
+
+\subsection{Carmichael Number}
+A composite integer $n$ that satisfies the congruence $b\textsuperscript{n-1}\equiv1\text{ (mod n)}$ for all positive integers $b$ with $gcd(b, n) = 1$ is called a Carmichael number.\cite{rosenDiscrete}
+
+
+\section{Tools Used}
+\begin{itemize}
+    \item Python
+    \item VS Code - for running python code
+    \item MacTeX -\LaTeX  compiler
+    \item VS Code with \LaTeX workshop extension as a text editor
+\end{itemize}
+
+\section{Process}
+
+\subsection{Code:}
+\subsubsection{Chinese Reminder Theorem}
+\inputminted[breaklines,linenos]{python3}{codes/chineseRem.py}
+\vspace*{40mm}
+\subsubsection{Carmichael Number}
+\inputminted[breaklines,linenos]{python3}{codes/carma.py}
+
+
+\vspace{20mm}
+\subsection{Output}
+\input{output.tex}
+
+\section{Discussion}
+In the above codes, for the first one there's another way to find the solution. The one used here uses inverse modulo based implementation. Inputs are the three numbers which are pairwise co-prime, and given remainders of these numbers when an unknown number x is divided by them. \cite{chineseCar}\\
+For the Carmichael Number problem, we iterate through all numbers from 1 to n and for every relatively prime number, we check if its $(n-1)\textsuperscript{th}$ power under modulo n is 1 or not. \cite{chineseCar}
+
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+
+\end{document}

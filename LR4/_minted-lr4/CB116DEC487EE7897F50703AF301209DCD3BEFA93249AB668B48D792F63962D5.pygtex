@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{sympy}
+\PYG{k+kn}{from} \PYG{n+nn}{itertools} \PYG{k+kn}{import} \PYG{n}{product}
+\PYG{k+kn}{from} \PYG{n+nn}{sympy.logic.boolalg} \PYG{k+kn}{import} \PYG{n}{truth\PYGZus{}table}
+\PYG{k+kn}{from} \PYG{n+nn}{sympy.abc} \PYG{k+kn}{import} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}
+
+\PYG{n}{p}\PYG{p}{,} \PYG{n}{q} \PYG{o}{=} \PYG{n}{sympy}\PYG{o}{.}\PYG{n}{symbols}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}p q\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Defining logical expressions}
+\PYG{n}{expr} \PYG{o}{=} \PYG{o}{\PYGZti{}}\PYG{p}{(}\PYG{n}{p} \PYG{o}{|} \PYG{o}{\PYGZti{}}\PYG{n}{p}\PYG{p}{)}
+
+\PYG{n}{table} \PYG{o}{=} \PYG{n}{truth\PYGZus{}table}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{,} \PYG{p}{[}\PYG{n}{p}\PYG{p}{,} \PYG{n}{p}\PYG{p}{])}
+\PYG{n}{contradiction} \PYG{o}{=} \PYG{k+kc}{True}
+\PYG{k}{for} \PYG{n}{t} \PYG{o+ow}{in} \PYG{n}{table}\PYG{p}{:}
+    \PYG{c+c1}{\PYGZsh{} printing the truth table}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}0\PYGZcb{}}\PYG{l+s+s2}{ \PYGZhy{}\PYGZgt{} }\PYG{l+s+si}{\PYGZob{}1\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{o}{*}\PYG{n}{t}\PYG{p}{))}
+    \PYG{k}{if} \PYG{n}{t}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{==} \PYG{k+kc}{True}\PYG{p}{:}
+        \PYG{n}{contradiction} \PYG{o}{=} \PYG{k+kc}{False}
+        \PYG{k}{break}
+
+\PYG{k}{if} \PYG{n}{contradiction}\PYG{p}{:}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}The statement is a contradiction.\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}The statement is not a contradiction.\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

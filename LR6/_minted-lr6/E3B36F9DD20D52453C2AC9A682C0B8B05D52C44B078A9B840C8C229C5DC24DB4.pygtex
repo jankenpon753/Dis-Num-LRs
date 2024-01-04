@@ -1,0 +1,41 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} finding GCD}
+\PYG{k}{def} \PYG{n+nf}{gcd}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{):}
+    \PYG{k}{if} \PYG{n}{a} \PYG{o}{\PYGZlt{}} \PYG{n}{b}\PYG{p}{:}
+        \PYG{k}{return} \PYG{n}{gcd}\PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{a}\PYG{p}{)}
+    \PYG{k}{if} \PYG{n}{a} \PYG{o}{\PYGZpc{}} \PYG{n}{b} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{k}{return} \PYG{n}{b}
+    \PYG{k}{return} \PYG{n}{gcd}\PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{a} \PYG{o}{\PYGZpc{}} \PYG{n}{b}\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{} finding modular exponent}
+\PYG{k}{def} \PYG{n+nf}{modExpo}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{mod}\PYG{p}{):}
+    \PYG{k}{if} \PYG{n}{y} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{k}{return} \PYG{l+m+mi}{1}
+    \PYG{n}{temp} \PYG{o}{=} \PYG{n}{modExpo}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y} \PYG{o}{//} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{mod}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}
+    \PYG{n}{temp} \PYG{o}{=} \PYG{p}{(}\PYG{n}{temp} \PYG{o}{*} \PYG{n}{temp}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}
+    \PYG{k}{if} \PYG{n}{y} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{2} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{:}
+        \PYG{n}{temp} \PYG{o}{=} \PYG{p}{(}\PYG{n}{temp} \PYG{o}{*} \PYG{n}{x}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}
+    \PYG{k}{return} \PYG{n}{temp}
+
+
+\PYG{c+c1}{\PYGZsh{} function to find Carmichael number}
+\PYG{k}{def} \PYG{n+nf}{carmaNumber}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+    \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{2}
+    \PYG{k}{while} \PYG{n}{b} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{:}
+        \PYG{k}{if} \PYG{n}{n} \PYG{o}{\PYGZpc{}} \PYG{n}{b} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{:}
+            \PYG{k}{return} \PYG{l+m+mi}{0}
+        \PYG{k}{if} \PYG{n}{gcd}\PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{n}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n}{modExpo}\PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{n}\PYG{p}{)} \PYG{o}{!=} \PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{k}{return} \PYG{l+m+mi}{0}
+        \PYG{n}{b} \PYG{o}{=} \PYG{n}{b} \PYG{o}{+} \PYG{l+m+mi}{1}
+    \PYG{k}{return} \PYG{l+m+mi}{1}
+
+
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{):}
+    \PYG{n}{x} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{())}
+    \PYG{k}{if} \PYG{n}{carmaNumber}\PYG{p}{(}\PYG{n}{x}\PYG{p}{):}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{} is Carmichael\PYGZdq{}}\PYG{p}{)}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{} is NOT Carmichael\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

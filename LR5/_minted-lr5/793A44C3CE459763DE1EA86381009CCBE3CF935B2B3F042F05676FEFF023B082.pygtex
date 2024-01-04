@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} importing the previuosly defined dunctions from other files}
+\PYG{k+kn}{from} \PYG{n+nn}{amodularExpo} \PYG{k+kn}{import} \PYG{n}{bin\PYGZus{}exp}
+\PYG{k+kn}{from} \PYG{n+nn}{bbinaryAddSub} \PYG{k+kn}{import} \PYG{n}{bin\PYGZus{}add}\PYG{p}{,} \PYG{n}{bin\PYGZus{}sub}
+
+\PYG{n}{base} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Base: \PYGZdq{}}\PYG{p}{))}
+\PYG{n}{expo} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Exponent: \PYGZdq{}}\PYG{p}{))}
+\PYG{n}{mod} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Mod: \PYGZdq{}}\PYG{p}{))}
+\PYG{n}{a} \PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Binary A: \PYGZdq{}}\PYG{p}{)}
+\PYG{n}{b} \PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Binary B: \PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} using the functions directly}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Modular exponent: \PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{bin\PYGZus{}exp}\PYG{p}{(}\PYG{n}{base}\PYG{p}{,} \PYG{n}{expo}\PYG{p}{,} \PYG{n}{mod}\PYG{p}{)))}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Sum of A \PYGZam{} B = \PYGZdq{}} \PYG{o}{+} \PYG{n}{bin\PYGZus{}add}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{))}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Difference of A \PYGZam{} B = \PYGZdq{}} \PYG{o}{+} \PYG{n}{bin\PYGZus{}sub}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{))}
+\end{Verbatim}
