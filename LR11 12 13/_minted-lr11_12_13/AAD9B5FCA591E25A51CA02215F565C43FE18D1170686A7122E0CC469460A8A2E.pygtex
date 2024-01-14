@@ -1,0 +1,33 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{n}{close}\PYG{+w}{ }\PYG{l+s}{all}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{clear}\PYG{+w}{ }\PYG{l+s}{all}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n+nb}{clc}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{syms}\PYG{+w}{ }\PYG{l+s}{x}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{f}\PYG{+w}{ }\PYG{p}{=}\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Enter the function : \PYGZsq{}}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{n}{theta}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n+nb}{pi}\PYG{p}{:}\PYG{n+nb}{pi}\PYG{o}{/}\PYG{l+m+mi}{20}\PYG{p}{:}\PYG{n+nb}{pi}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n}{g}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{f}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c}{\PYGZpc{}hold on;}
+\PYG{+w}{    }\PYG{n}{y}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Enter the value for approximation: \PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{a}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Enter the starting point: \PYGZsq{}}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{n}{n}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Enter the number of order: \PYGZsq{}}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{n}{taylor}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{eval}\PYG{p}{(}\PYG{n}{subs}\PYG{p}{(}\PYG{n}{f}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{a}\PYG{p}{));}
+
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{n+nb}{i}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{n}
+\PYG{+w}{        }\PYG{n}{f}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{diff}\PYG{p}{(}\PYG{n}{f}\PYG{p}{,}\PYG{n}{x}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{taylor}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{taylor}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{n+nb}{eval}\PYG{p}{(}\PYG{n}{subs}\PYG{p}{(}\PYG{n}{f}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{a}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{power}\PYG{p}{((}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{a}\PYG{p}{),}\PYG{n+nb}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n+nb}{factorial}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{);}
+\PYG{+w}{        }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{n}{taylor}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{theta}\PYG{p}{,}\PYG{n}{subs}\PYG{p}{(}\PYG{n}{taylor}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{theta}\PYG{p}{));}
+\PYG{+w}{        }\PYG{n}{hold}\PYG{+w}{ }\PYG{l+s}{on}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{n+nb}{i}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{n}
+\PYG{+w}{        }\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{theta}\PYG{p}{,}\PYG{n}{subs}\PYG{p}{(}\PYG{n}{g}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{theta}\PYG{p}{));}
+\PYG{+w}{        }\PYG{k}{end}
+\PYG{+w}{    }\PYG{k}{end}
+
+\PYG{+w}{    }\PYG{n+nb}{disp}\PYG{p}{(}\PYG{n+nb}{eval}\PYG{p}{(}\PYG{n}{subs}\PYG{p}{(}\PYG{n}{taylor}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{)));}
+
+\end{Verbatim}

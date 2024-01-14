@@ -23,12 +23,57 @@ Here, \(P_n(x)\) is the polynomial of degree \(n\) used for interpolation, \(f(x
 
 \subsection*{Code for Newton's Backward Interpolation:}
 \begin{minted}[breaklines, linenos]{matlab}
-
+    clc;
+    clear all;
+    close all;
+    matrix = [];
+    
+    number = input('How many pair of data is given: ');
+    
+    for i = 1:number
+            matrix(i,1) = input('Enter value(x) : ');
+            matrix(i,2) = input('Enter value(y) : ');
+    end
+    
+    
+    xo = matrix(1,1);
+    xn = matrix(number,1);
+    h = matrix(2,1)-xo;
+    x = input('Enter the value for which the function is to be evaluated:');
+    
+    n = number -1;
+    
+    for j = 3: (number+1)
+        for i = 1:n
+            matrix(i,j) = matrix(i+1,j-1)-matrix(i,j-1);
+        end
+        n = n-1;
+    end
+    
+    disp(matrix)
+    p = (x-xn)/h;
+    z = p;
+    c = 3;
+    yn = matrix(number,2);
+    i = 1;
+    j = number-1;
+    while(1)
+        fprintf('yn = %f + (%f * %f)/%d! \n',yn,p,matrix(j,c),i)
+        yn = yn + (pmatrix(j,c))/factorial(i);
+        if i == number-1
+             break
+        end
+        c = c+1;
+        p = p(z+i);
+        i = i+1;
+        j = j-1; 
+    end
+    disp(yn);
 \end{minted}
 
 \subsection*{Output}
 \begin{center}
     \centering
-    % \includegraphics[width = .9\textwidth]{false.jpeg}
+    \includegraphics[width = .9\textwidth]{bwd.png}
     \captionof{figure}{Newton's Backward Method}
 \end{center}

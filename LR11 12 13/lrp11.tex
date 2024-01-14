@@ -23,12 +23,41 @@ For sine function, the taylor series is expanded as:
 \section*{Process}
 \subsection*{Code for Taylor sine series:}
 \begin{minted}[breaklines, linenos]{matlab}
+    close all;
+    clear all;
+    clc;
+    syms x;
+    f =input('Enter the function : ');
 
+    theta = -pi:pi/20:pi;
+
+    g = f;
+
+    %hold on;
+    y = input('Enter the value for approximation: ');
+    a = input('Enter the starting point: ');
+
+    n = input('Enter the number of order: ');
+
+    taylor = eval(subs(f,x,a));
+
+    for i = 1:n
+        f = diff(f,x);
+        taylor = taylor + ( eval(subs(f,x,a)) * power((x-a),i) / factorial(i) );
+        disp(taylor);
+        plot(theta,subs(taylor,x,theta));
+        hold on;
+        if i == n
+        plot(theta,subs(g,x,theta));
+        end
+    end
+
+    disp(eval(subs(taylor,x,y)));
 \end{minted}
 \subsection*{Output}
 \begin{center}
     \centering
-    % \includegraphics[width = .9\textwidth]{bisec.jpeg}
+    \includegraphics[width = .9\textwidth]{tay.png}
     \captionof{figure}{Taylor Sine Series ($-\pi \leq \:\: $x$ \:\: \leq \pi$)}
 \end{center}
 
